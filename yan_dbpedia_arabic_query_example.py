@@ -1,15 +1,42 @@
 from yan_dbpedia_arabic_query import *
 
+'''
+
+http://localhost:4522/app/discover#/view/b8e759c0-81c6-11ec-8ba5-492ad581a6be
+
+http://localhost:4522/app/dashboards#/view/2b844c60-8012-11ec-b7d6-bb167b339ae4
+
+http://localhost:4522/app/dashboards#/view/c2d53e60-7fa1-11ec-a4ee-9134f5c69475
+
+'''
+
+##########
+
+
+text = u"""
+أليخاندرو خارا	
+سانتياغو
+"""
+
+entities = text_entity_linking(text)
+
+for e in entities:
+	print(e)
+
+
 ##########
 
 find_entity_by_name(
-	entity_name = u"جدة",
+	entity_name = u"دبي",
 	)
 
+#'9a57177fcc2b6f203998a28a878488c7'
 
 find_entity_by_main_name(
 	entity_name = u"أبو ظبي	",
 	)
+
+#'7702b3333b72107676d32b7c6ac4a0fc'
 
 ##########
 

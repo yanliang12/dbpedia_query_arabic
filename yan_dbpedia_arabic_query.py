@@ -1,6 +1,8 @@
 ############yan_dbpedia_arabic_query.py##############
 import jessica_es
 
+md5_str = lambda input: hashlib.md5(input.encode()).hexdigest()
+
 es_session = jessica_es.start_es(
 	es_path = "/yan/elasticsearch_dbpedia_arabic",
 	es_port_number = "5987")
@@ -9,6 +11,77 @@ es_session = jessica_es.start_es(
 localhost:5987/entity/_search?pretty=true
 '''
 
+
+
+'''
+text = u"""
+أليخاندرو خارا	
+سانتياغو
+"""
+
+entities = text_entity_linking(text)
+
+for e in entities:
+	print(e)
+'''
+
+def text_entity_linking(
+	text,
+	):
+	output = []
+	'''
+	prepare the text for matching
+	'''
+	text = re.sub(r'\s+', r'  ', text.strip())
+	text = ' '+text.strip()+' '
+	'''
+	split text to words
+	'''
+	words = text.strip().split(r'  ')
+	words = list(set(words))
+	'''
+	search the words in the word index
+	'''
+	candidate_entities = []
+	for w in words:
+		#print(w)
+		search_results = jessica_es.search_doc_by_filter(
+			index_name = 'entity_word',
+			field_name = 'entity_word_hash',
+			entity_name = md5_str(w),
+			es_session = es_session,
+			return_entity_max_number = 10000)
+		candidate_entities += search_results
+		#print(search_results)
+	'''
+	parepare the candidate entities for matching and return matched results
+	'''
+	candidate_entities =  [dict(t) for t in {tuple(d.items()) for d in candidate_entities}]
+	candidate_entities1 = {}
+	for e in candidate_entities:
+		entity_key = re.sub(r'\s+', r'  ', e['entity_name_main'].strip())
+		candidate_entities1[entity_key] = e
+	'''
+	make a regex rule from the candidate entity names
+	'''
+	entity_names = [re.escape(k) for k in candidate_entities1]
+	entity_names = sorted(entity_names, key=len, reverse=True)
+	re_candidate_words = '(^| )(?P<entity>('+'|'.join(entity_names)+'))($| )'
+	'''
+	detect entity from text
+	'''
+	matched_entity_names = []
+	for m in re.finditer(
+		re_candidate_words,
+		text,
+		):
+		matched_entity_names.append(m.group('entity'))
+	'''
+	return the matched entities
+	'''
+	for k in matched_entity_names:
+		output.append(candidate_entities1[k])
+	return output
 
 
 '''
