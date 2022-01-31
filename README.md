@@ -31,9 +31,8 @@ python3
 >>> for e in entities:
 ...     print(e)
 ...
-{'document_id': 'dba56a4830b771dfc1d1744a3b97f565', 'entity': '7702b3333b72107676d32b7c6ac4a0fc', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أبو_ظبي>', 'entity_name': 'أبو ظبي', 'entity_name_main': 'أبو ظبي', 'entity_type': 'locationCity', 'entity_word': 'ظبي', 'entity_word_hash': '735dd48f8e137071f02f8907c88ee368', 'entity_word_popularity': 8, 'entity_word_rank': 1}
-{'document_id': '2609957379d1c75404d3237ece8b8091', 'entity': '8ca353fbf1a88b37d7afe33acf88952d', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/هي_(مان!)>', 'entity_name': 'هي (مان!)', 'entity_name_main': 'هي ', 'entity_type': 'Album', 'entity_word': 'هي', 'entity_word_hash': '487dd24054f499af233dc6d9594ec4d2', 'entity_word_popularity': 66, 'entity_word_rank': 1, 'entity_name_comment': 'مان!'}
-{'document_id': '8ba8b980059f24c9fc97460a3e1566d7', 'entity': '3866651c5246600502045d2778d53b7d', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/دولة_الإمارات_العربية_المتحدة>', 'entity_name': 'دولة الإمارات العربية المتحدة', 'entity_name_main': 'دولة الإمارات العربية المتحدة', 'entity_type': 'deathPlace', 'entity_word': 'دولة', 'entity_word_hash': '029a4d819c598ccac41b619c97497206', 'entity_word_popularity': 10, 'entity_word_rank': 1}
+{'document_id': '2df2fdb06d6e69f504aa361c62c2f1d8', 'entity': '238627321d9d451854087996d5adee4e', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أليخاندرو_خارا>', 'entity_name': 'أليخاندرو خارا', 'entity_name_main': 'أليخاندرو خارا', 'entity_type': 'Person', 'entity_word': 'خارا', 'entity_word_hash': 'c03edd63c0a802eed9b4ff74b7475822', 'entity_word_popularity': 4, 'entity_word_rank': 1}
+{'document_id': '65286a6f591ce7c0ff8bfc8e3d2c096d', 'entity': '113c85b80fa2e329b06b2ee4f9b6947b', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/سانتياغو>', 'entity_name': 'سانتياغو', 'entity_name_main': 'سانتياغو', 'entity_type': 'Settlement', 'entity_word': 'سانتياغو', 'entity_word_hash': '0861b195d0bc859b5b98c850e80da0c2', 'entity_word_popularity': 48, 'entity_word_rank': 1}
 >>>
 >>>
 >>> ##########
