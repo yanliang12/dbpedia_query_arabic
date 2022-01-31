@@ -1,5 +1,8 @@
 ############yan_dbpedia_arabic_query.py##############
+import re 
+import hashlib
 import jessica_es
+
 
 md5_str = lambda input: hashlib.md5(input.encode()).hexdigest()
 
