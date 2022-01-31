@@ -18,8 +18,7 @@ localhost:5987/entity/_search?pretty=true
 
 '''
 text = u"""
-أليخاندرو خارا	
-سانتياغو
+أعيش في أبو ظبي ولكن أعمل في دبي
 """
 
 entities = text_entity_linking(text)
@@ -62,7 +61,7 @@ def text_entity_linking(
 	candidate_entities =  [dict(t) for t in {tuple(d.items()) for d in candidate_entities}]
 	candidate_entities1 = {}
 	for e in candidate_entities:
-		entity_key = re.sub(r'\s+', r'  ', e['entity_name_main'].strip())
+		entity_key = re.sub(r'\s+', r'  ', e['entity_name'].strip())
 		candidate_entities1[entity_key] = e
 	'''
 	make a regex rule from the candidate entity names
