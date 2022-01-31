@@ -23,7 +23,7 @@ python3
 >>> from yan_dbpedia_arabic_query import *
 >>>
 >>> text = u"""
-... أبو ظبي هي عاصمة دولة الإمارات العربية المتحدة
+أعيش في أبو ظبي ولكن أعمل في دبي
 ... """
 >>>
 >>> entities = text_entity_linking(text)
@@ -31,8 +31,8 @@ python3
 >>> for e in entities:
 ...     print(e)
 ...
-{'document_id': '2df2fdb06d6e69f504aa361c62c2f1d8', 'entity': '238627321d9d451854087996d5adee4e', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أليخاندرو_خارا>', 'entity_name': 'أليخاندرو خارا', 'entity_name_main': 'أليخاندرو خارا', 'entity_type': 'Person', 'entity_word': 'خارا', 'entity_word_hash': 'c03edd63c0a802eed9b4ff74b7475822', 'entity_word_popularity': 4, 'entity_word_rank': 1}
-{'document_id': '65286a6f591ce7c0ff8bfc8e3d2c096d', 'entity': '113c85b80fa2e329b06b2ee4f9b6947b', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/سانتياغو>', 'entity_name': 'سانتياغو', 'entity_name_main': 'سانتياغو', 'entity_type': 'Settlement', 'entity_word': 'سانتياغو', 'entity_word_hash': '0861b195d0bc859b5b98c850e80da0c2', 'entity_word_popularity': 48, 'entity_word_rank': 1}
+{'document_id': 'dba56a4830b771dfc1d1744a3b97f565', 'entity': '7702b3333b72107676d32b7c6ac4a0fc', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أبو_ظبي>', 'entity_name': 'أبو ظبي', 'entity_name_main': 'أبو ظبي', 'entity_type': 'locationCity', 'entity_word': 'ظبي', 'entity_word_hash': '735dd48f8e137071f02f8907c88ee368', 'entity_word_popularity': 8, 'entity_word_rank': 1}
+{'document_id': 'c85b16ab874f4481381b2ecf5ab92fc1', 'entity': '9a57177fcc2b6f203998a28a878488c7', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/دبي>', 'entity_name': 'دبي', 'entity_name_main': 'دبي', 'entity_type': 'residence', 'entity_word': 'دبي', 'entity_word_hash': '30f6afc588cc90e827ec7673a2b450b5', 'entity_word_popularity': 32, 'entity_word_rank': 1}
 >>>
 >>>
 >>> ##########
