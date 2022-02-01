@@ -24,7 +24,6 @@ text = u"""
 entities = text_entity_linking(text)
 
 for e in entities:
-	print('\n')
 	print(e)
 
 ###
@@ -36,7 +35,6 @@ text = u"""
 entities = text_entity_linking(text)
 
 for e in entities:
-	print('\n')
 	print(e)
 
 
