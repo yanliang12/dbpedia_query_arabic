@@ -6,6 +6,12 @@ import jessica_es
 
 md5_str = lambda input: hashlib.md5(input.encode()).hexdigest()
 
+
+
+es_session = jessica_es.start_es(
+	es_path = "/es/elasticsearch_dbpedia_arabic",
+	es_port_number = "5987")
+
 es_session = jessica_es.start_es(
 	es_path = "/yan/elasticsearch_dbpedia_arabic",
 	es_port_number = "5987")
@@ -29,7 +35,7 @@ for e in entities:
 ###
 
 text = u"""
-أعيش في أبو ظبي وأعمل في دبي
+إنه من وودإنفيل وأنا من بروكيت
 """
 
 entities = text_entity_linking(text)
@@ -37,8 +43,50 @@ entities = text_entity_linking(text)
 for e in entities:
 	print(e)
 
-
 '''
+
+def entity_matching(
+	entity_name,
+	entity,
+	text,
+	):
+	try:
+		if entity['entity_out_degree'] > 50:
+			#print('entity_out_degree')
+			return entity
+	except:
+		pass
+	#
+	try:
+		if len(entity_name) >= 5:
+			#print('long')
+			return entity
+	except:
+		pass
+	#
+	try:
+		if 'entity_name_comment' not in entity:
+			#print('no comment')
+			return entity
+	except:
+		pass
+	#
+	try:
+		if len(entity_name) < 5 and 'entity_name_comment' in entity:
+			#print('short but comment')
+			comment = re.sub(r'\s+', r'  ', entity['entity_name_comment'].strip())
+			comment = " "+comment+" "
+			comment = re.escape(comment)
+			comment_in = bool(re.search(comment, text))
+			if comment_in:
+				return entity
+	except:
+		pass
+	#
+	#print('missed')
+	return None
+
+
 
 def text_entity_linking(
 	text,
@@ -95,20 +143,13 @@ def text_entity_linking(
 	return the matched entities
 	'''
 	for k in matched_entity_names:
-		'''
-		if the entity main name is too short, and the comment is not null
-		also need to match the comment
-		'''
-		if len(k) <= 3 and 'entity_name_comment' in candidate_entities1[k]:
-			#print(candidate_entities1[k])
-			comment = re.sub(r'\s+', r'  ', candidate_entities1[k]['entity_name_comment'].strip())
-			comment = " "+comment+" "
-			comment = re.escape(comment)
-			comment_in = bool(re.search(comment, text))
-			if comment_in:
-				output.append(candidate_entities1[k])
-		else:
-			output.append(candidate_entities1[k])		
+		matched_entity = entity_matching(
+			entity_name = k,
+			entity = candidate_entities1[k],
+			text = text,
+			)
+		if matched_entity is not None:
+			output.append(matched_entity)
 	return output
 
 
