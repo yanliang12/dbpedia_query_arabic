@@ -15,16 +15,31 @@ localhost:5987/entity/_search?pretty=true
 '''
 
 
-
 '''
+
 text = u"""
-أعيش في أبو ظبي ولكن أعمل في دبي
+إل هو مغني جيد
 """
 
 entities = text_entity_linking(text)
 
 for e in entities:
+	print('\n')
 	print(e)
+
+###
+
+text = u"""
+أعيش في أبو ظبي وأعمل في دبي
+"""
+
+entities = text_entity_linking(text)
+
+for e in entities:
+	print('\n')
+	print(e)
+
+
 '''
 
 def text_entity_linking(
@@ -61,7 +76,7 @@ def text_entity_linking(
 	candidate_entities =  [dict(t) for t in {tuple(d.items()) for d in candidate_entities}]
 	candidate_entities1 = {}
 	for e in candidate_entities:
-		entity_key = re.sub(r'\s+', r'  ', e['entity_name'].strip())
+		entity_key = re.sub(r'\s+', r'  ', e['entity_name_main'].strip())
 		candidate_entities1[entity_key] = e
 	'''
 	make a regex rule from the candidate entity names
@@ -82,7 +97,20 @@ def text_entity_linking(
 	return the matched entities
 	'''
 	for k in matched_entity_names:
-		output.append(candidate_entities1[k])
+		'''
+		if the entity main name is too short, and the comment is not null
+		also need to match the comment
+		'''
+		if len(k) <= 3 and 'entity_name_comment' in candidate_entities1[k]:
+			#print(candidate_entities1[k])
+			comment = re.sub(r'\s+', r'  ', candidate_entities1[k]['entity_name_comment'].strip())
+			comment = " "+comment+" "
+			comment = re.escape(comment)
+			comment_in = bool(re.search(comment, text))
+			if comment_in:
+				output.append(candidate_entities1[k])
+		else:
+			output.append(candidate_entities1[k])		
 	return output
 
 
