@@ -23,7 +23,7 @@ python3
 >>> from yan_dbpedia_arabic_query import *
 >>>
 >>> text = u"""
-أعيش في أبو ظبي ولكن أعمل في دبي
+... إل هو مغني جيد
 ... """
 >>>
 >>> entities = text_entity_linking(text)
@@ -31,8 +31,9 @@ python3
 >>> for e in entities:
 ...     print(e)
 ...
-{'document_id': 'dba56a4830b771dfc1d1744a3b97f565', 'entity': '7702b3333b72107676d32b7c6ac4a0fc', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أبو_ظبي>', 'entity_name': 'أبو ظبي', 'entity_name_main': 'أبو ظبي', 'entity_type': 'locationCity', 'entity_word': 'ظبي', 'entity_word_hash': '735dd48f8e137071f02f8907c88ee368', 'entity_word_popularity': 8, 'entity_word_rank': 1}
-{'document_id': 'c85b16ab874f4481381b2ecf5ab92fc1', 'entity': '9a57177fcc2b6f203998a28a878488c7', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/دبي>', 'entity_name': 'دبي', 'entity_name_main': 'دبي', 'entity_type': 'residence', 'entity_word': 'دبي', 'entity_word_hash': '30f6afc588cc90e827ec7673a2b450b5', 'entity_word_popularity': 32, 'entity_word_rank': 1}
+{'document_id': '3d2bbb392ba408b1694433417e7b8beb', 'entity': '67cb773dc48f6880e485731893d5deb1', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/إل_(مغني)>', 'entity_name': 'إل (مغني)', 'entity_name_main': 'إل ', 'entity_type': 'Actor', 'entity_word': 'إل', 'entity_word_hash': '4cf118e93ccab6031103557ef6d7789a', 'entity_word_popularity': 202, 'entity_word_rank': 1, 'entity_name_comment': 'مغني'}
+{'document_id': '7134f3800ef955d2e5f884db6aca3ff5', 'entity': '79cb41bfa531b1af6e531f20c4436d7e', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/مغني>', 'entity_name': 'مغني', 'entity_name_main': 'مغني', 'entity_type': 'occupation', 'entity_word': 'مغني', 'entity_word_hash': 'ca2dc141435e8ed7d65d2b5168000225', 'entity_word_popularity': 6, 'entity_word_rank': 1}
+>>>
 >>>
 >>>
 >>> ##########
