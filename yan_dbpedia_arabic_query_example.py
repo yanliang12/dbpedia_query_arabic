@@ -12,9 +12,8 @@ http://localhost:4522/app/dashboards#/view/c2d53e60-7fa1-11ec-a4ee-9134f5c69475
 
 ##########
 
-
 text = u"""
-أنا من دبي
+أعمل في الدوحة ولكني أعيش في أبو ظبي
 """
 
 entities = text_entity_linking(text)
@@ -24,27 +23,8 @@ for e in entities:
 
 
 '''
-{'document_id': '3d2bbb392ba408b1694433417e7b8beb', 'entity': '67cb773dc48f6880e485731893d5deb1', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/إل_(مغني)>', 'entity_name': 'إل (مغني)', 'entity_name_main': 'إل ', 'entity_type': 'Actor', 'entity_word': 'إل', 'entity_word_hash': '4cf118e93ccab6031103557ef6d7789a', 'entity_word_popularity': 202, 'entity_word_rank': 1, 'entity_name_comment': 'مغني'}
-{'document_id': '7134f3800ef955d2e5f884db6aca3ff5', 'entity': '79cb41bfa531b1af6e531f20c4436d7e', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/مغني>', 'entity_name': 'مغني', 'entity_name_main': 'مغني', 'entity_type': 'occupation', 'entity_word': 'مغني', 'entity_word_hash': 'ca2dc141435e8ed7d65d2b5168000225', 'entity_word_popularity': 6, 'entity_word_rank': 1}
-'''
-
-
-###
-
-text = u"""
-انا من ابوظبي
-"""
-
-entities = text_entity_linking(text)
-
-for e in entities:
-	print(e)
-
-
-'''
-{'document_id': 'dba56a4830b771dfc1d1744a3b97f565', 'entity': '7702b3333b72107676d32b7c6ac4a0fc', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أبو_ظبي>', 'entity_name': 'أبو ظبي', 'entity_name_main': 'أبو ظبي', 'entity_type': 'locationCity', 'entity_word': 'ظبي', 'entity_word_hash': '735dd48f8e137071f02f8907c88ee368', 'entity_word_popularity': 8, 'entity_word_rank': 1}
-{'document_id': '2609957379d1c75404d3237ece8b8091', 'entity': '8ca353fbf1a88b37d7afe33acf88952d', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/هي_(مان!)>', 'entity_name': 'هي (مان!)', 'entity_name_main': 'هي ', 'entity_type': 'Album', 'entity_word': 'هي', 'entity_word_hash': '487dd24054f499af233dc6d9594ec4d2', 'entity_word_popularity': 66, 'entity_word_rank': 1, 'entity_name_comment': 'مان!'}
-{'document_id': '8ba8b980059f24c9fc97460a3e1566d7', 'entity': '3866651c5246600502045d2778d53b7d', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/دولة_الإمارات_العربية_المتحدة>', 'entity_name': 'دولة الإمارات العربية المتحدة', 'entity_name_main': 'دولة الإمارات العربية المتحدة', 'entity_type': 'deathPlace', 'entity_word': 'دولة', 'entity_word_hash': '029a4d819c598ccac41b619c97497206', 'entity_word_popularity': 10, 'entity_word_rank': 1}
+{'document_id': 'd70e2d49c43a68701641135559e018f1', 'entity': '7a36ab8c99c32695edc3c984c6f9e0a1', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/الدوحة>', 'entity_name': 'الدوحة', 'entity_name_main': 'الدوحة', 'entity_type': 'Settlement', 'entity_word': 'الدوحة', 'entity_word_hash': '868fe5876ece69f59962f961b7581934', 'entity_word_popularity': 5, 'entity_word_rank': 1, 'entity_out_degree': 104.0, 'matching_method': 'entity_out_degree'}
+{'document_id': 'dba56a4830b771dfc1d1744a3b97f565', 'entity': '7702b3333b72107676d32b7c6ac4a0fc', 'entity_dbpedia_id': '<http://ar.dbpedia.org/resource/أبو_ظبي>', 'entity_name': 'أبو ظبي', 'entity_name_main': 'أبو ظبي', 'entity_type': 'locationCity', 'entity_out_degree': 2.0, 'entity_word': 'ظبي', 'entity_word_hash': '735dd48f8e137071f02f8907c88ee368', 'entity_word_popularity': 8, 'entity_word_rank': 1, 'matching_method': 'entity_name_long'}
 '''
 
 ##########
