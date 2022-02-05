@@ -51,6 +51,9 @@ RUN tar -xzf kibana-7.13.4-linux-x86_64.tar.gz
 
 ######
 
+RUN echo "sd5g1s5g1g115sdg"
+
+
 COPY elasticsearch_dbpedia_arabic.tar.gz /yan/
 RUN tar -xzvf /yan/elasticsearch_dbpedia_arabic.tar.gz
 RUN rm elasticsearch_dbpedia_arabic.tar.gz
@@ -60,7 +63,8 @@ RUN rm elasticsearch_dbpedia_arabic.tar.gz
 ENV PYSPARK_PYTHON=/usr/bin/python3
 ENV PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 
-RUN echo "sd1g6s1g52d0g5"
+RUN echo "5sdg1sgsd22222"
+
 
 WORKDIR /yan/
 RUN git clone https://github.com/liang6261515/jessica_kibana_docker.git
