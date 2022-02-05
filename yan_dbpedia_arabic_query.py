@@ -6,12 +6,6 @@ import jessica_es
 
 md5_str = lambda input: hashlib.md5(input.encode()).hexdigest()
 
-
-
-es_session = jessica_es.start_es(
-	es_path = "/es/elasticsearch_dbpedia_arabic",
-	es_port_number = "5987")
-
 es_session = jessica_es.start_es(
 	es_path = "/yan/elasticsearch_dbpedia_arabic",
 	es_port_number = "5987")
@@ -22,6 +16,8 @@ localhost:5987/entity/_search?pretty=true
 
 
 '''
+
+http://localhost:4522/app/discover#/view/b8e759c0-81c6-11ec-8ba5-492ad581a6be
 
 text = u"""
 إل هو مغني جيد
@@ -35,7 +31,7 @@ for e in entities:
 ###
 
 text = u"""
-إنه من وودإنفيل وأنا من بروكيت
+أنا من دبي لكني أعمل في أبو ظبي
 """
 
 entities = text_entity_linking(text)
@@ -53,6 +49,7 @@ def entity_matching(
 	try:
 		if entity['entity_out_degree'] > 50:
 			#print('entity_out_degree')
+			entity['matching_method'] = 'entity_out_degree'
 			return entity
 	except:
 		pass
@@ -60,12 +57,14 @@ def entity_matching(
 	try:
 		if len(entity_name) >= 5:
 			#print('long')
+			entity['matching_method'] = 'entity_name_long'
 			return entity
 	except:
 		pass
 	#
 	try:
 		if 'entity_name_comment' not in entity:
+			entity['matching_method'] = 'entity_comment_not_available'
 			#print('no comment')
 			return entity
 	except:
@@ -73,6 +72,7 @@ def entity_matching(
 	#
 	try:
 		if len(entity_name) < 5 and 'entity_name_comment' in entity:
+			entity['matching_method'] = 'entity_name_short_but_comment_in_text'
 			#print('short but comment')
 			comment = re.sub(r'\s+', r'  ', entity['entity_name_comment'].strip())
 			comment = " "+comment+" "
@@ -85,8 +85,6 @@ def entity_matching(
 	#
 	#print('missed')
 	return None
-
-
 
 def text_entity_linking(
 	text,
@@ -151,6 +149,7 @@ def text_entity_linking(
 		if matched_entity is not None:
 			output.append(matched_entity)
 	return output
+
 
 
 '''
